@@ -1,0 +1,30 @@
+<div class="card" style="background-color: #e3f2fd;">
+    <form action="controller" name="pay" method="post">
+        <input type="hidden" name="command" value="pay-request-bill-command">
+        <input type="hidden" name="requestId" value="${request.entityId}">
+        <input type="hidden" name="requestBill" value="${request.requestBill}">
+        <div class="card-header font-weight-bold">
+            <fmt:message key="label.expected.execution.day"/>: <jsp:text>${request.expectedExecutionDate}</jsp:text>
+            <br>
+            <fmt:message key="label.actual.execution.day"/>: <jsp:text>${request.executionDate}</jsp:text>
+        </div>
+        <div class="card-body">
+            <p class="card-text font-weight-normal"><fmt:message key="label.accommodations"/>:</p>
+            <c:if test="${not empty request.requestAccommodations}">
+                <c:forEach var="accommodation" items="${request.requestAccommodations}">
+                    <div class="card m-1">
+                        <div class="card-body  text-center">
+                            <p>${accommodation.accommodationName}</p>
+                        </div>
+                    </div>
+                </c:forEach>
+            </c:if>
+        </div>
+        <div class="card-footer font-weight-bold">
+            <fmt:message key="label.bill"/>: <jsp:text>${request.requestBill}</jsp:text>
+            <button type="submit" class="btn btn-primary" >
+                <fmt:message key="label.pay"/>
+            </button>
+        </div>
+    </form>
+</div>

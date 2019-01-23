@@ -1,0 +1,25 @@
+<div class="card" style="background-color: #e3f2fd;">
+    <div class="card-header font-weight-bold">
+        <fmt:message key="label.expected.execution.day"/>: <jsp:text>${request.expectedExecutionDate}</jsp:text>
+        <br>
+        <fmt:message key="label.actual.execution.day"/>: <jsp:text>${request.executionDate}</jsp:text>
+    </div>
+    <div class="card-body">
+        <p class="card-text font-weight-normal"><fmt:message key="label.accommodations"/>:</p>
+        <c:if test="${not empty request.requestAccommodations}">
+            <c:forEach var="accommodation" items="${request.requestAccommodations}">
+                <div class="card m-1">
+                    <div class="card-body  text-center">
+                        <p>${accommodation.accommodationName}</p>
+                        <fmt:message key="label.mark.for.accommodation"/>: <jsp:text>${accommodation.accommodationMark}</jsp:text>
+                    </div>
+                </div>
+            </c:forEach>
+        </c:if>
+    </div>
+    <div class="card-footer font-weight-bold">
+        <fmt:message key="label.bill"/>: ${request.requestBill}
+        <br>
+        <fmt:message key="label.request.status"/>: <fmt:message key="label.request.paid.status"/>
+    </div>
+</div>

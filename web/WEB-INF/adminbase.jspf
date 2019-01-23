@@ -1,0 +1,9 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<h4 class="font-weight-normal text-center"><fmt:message key="label.hello.admin"/></h4>
+<div class="d-flex bd-highlight text-center">
+    <div class="page-link flex-fill border-0"><a href="controller?command=go-to-accommodation-command"><fmt:message key="label.add.accommodation"/></a></div>
+    <div class="page-link flex-fill border-0"><a href="controller?command=view-all-users-command"><fmt:message key="label.view.users"/></a></div>
+    <div class="page-link flex-fill border-0"><a href="controller?command=admin-view-all-requests-command"><fmt:message key="label.view.all.requests"/></a></div>
+    <div class="page-link flex-fill border-0"><a href="controller?command=admin-view-new-requests-command"><fmt:message key="label.view.new.requests"/></a></div>
+    <div class="page-link flex-fill border-0"><a href="controller?command=admin-view-all-accommodations-command"><fmt:message key="label.view.all.accommodations"/></a></div>
+</div>

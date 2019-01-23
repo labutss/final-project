@@ -1,0 +1,25 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<h4 class="font-weight-normal text-center"><fmt:message key="label.hello.user"/></h4>
+<div class="container-fluid">
+    <div class="d-flex bd-highlight text-center">
+        <div class="page-link flex-fill border-0"><a href="controller?command=client-view-all-accommodations-command"><fmt:message key="label.all.accommodations"/></a></div>
+        <div class="page-link flex-fill border-0"><a href="controller?command=go-to-add-request-command"><fmt:message key="label.new.request"/></a></div>
+        <div class="page-link flex-fill border-0"><a href="controller?command=client-view-all-requests-command"><fmt:message key="label.user.requests"/></a></div>
+    </div>
+    <h5 class="font-weight-light m-1"><fmt:message key="label.current.balance"/> ${currentBalance}$</h5>
+    <form action="controller" name="topUpBalance">
+        <input type="hidden" name="command" value="top-up-balance-command">
+        <input type="text" required="required"<%-- pattern="^([1-9]{1}[0-9]{0,5}(\\.[0-9]{0,2})?|0(\\.[1-9]{1}([0-9]{1})?))$"--%> class="form-control" name="amountOfMoney" placeholder="<fmt:message key="label.top.up.balance"/>">
+        <div class="form-check m-1">
+            <button type="submit" class="btn btn-primary"><fmt:message key="label.top.up"/></button>
+        </div>
+    </form>
+</div>
+<c:if test="${not empty balanceMessage}">
+    <div class="alert-danger">
+        <h5>
+            <fmt:message key="message.invalid.amount.of.money"/>
+        </h5>
+    </div>
+</c:if>

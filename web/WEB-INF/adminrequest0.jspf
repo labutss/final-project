@@ -1,0 +1,34 @@
+<div class="card" style="background-color: #e3f2fd;">
+    <form name="setBill" action="controller" method="post">
+        <input type="hidden" name="command" value="set-request-bill-and-date-command">
+        <input type="hidden" name="requestId" value="${request.entityId}">
+        <input type="hidden" name="requestMessage" value="${message}">
+        <div class="card-header font-weight-bold">
+            <fmt:message key="label.expected.execution.day"/>: <jsp:text>${request.expectedExecutionDate}</jsp:text>
+        </div>
+        <div class="card-body">
+            <p class="card-text font-weight-normal"><fmt:message key="label.accommodations"/>:</p>
+            <c:if test="${not empty request.requestAccommodations}">
+                <c:forEach var="accommodation" items="${request.requestAccommodations}">
+                    <input type="hidden" name="accommodationId" value="${accommodation.entityId}">
+                    <div class="card m-1">
+                        <div class="card-body  text-center">
+                            <p>${accommodation.accommodationName}</p>
+                        </div>
+                    </div>
+                </c:forEach>
+            </c:if>
+        </div>
+        <div class="card-footer font-weight-bold">
+            <div class="form-group font-weight-light">
+                <div class="form-group font-weight-light">
+                    <label><fmt:message key="label.actual.execution.day"/>:</label>
+                    <input type="text" required="required" autocomplete="off" name="date" placeholder="mm/dd/yyyy" id="datepicker">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" >
+                <fmt:message key="label.set.bill"/>
+            </button>
+        </div>
+    </form>
+</div>

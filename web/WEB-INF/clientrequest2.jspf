@@ -1,0 +1,41 @@
+<div class="card" style="background-color: #e3f2fd;">
+    <div class="card-header font-weight-bold">
+        <fmt:message key="label.expected.execution.day"/>: <jsp:text>${request.expectedExecutionDate}</jsp:text>
+        <br>
+        <fmt:message key="label.actual.execution.day"/>: <jsp:text>${request.executionDate}</jsp:text>
+    </div>
+    <div class="card-body">
+        <p class="card-text font-weight-normal"><fmt:message key="label.accommodations"/>:</p>
+        <c:if test="${not empty request.requestAccommodations}">
+            <c:forEach var="accommodation" items="${request.requestAccommodations}">
+                <div class="card m-1">
+                    <div class="card-body  text-center">
+                        <p>${accommodation.accommodationName}</p>
+                        <c:choose>
+                            <c:when test="${accommodation.accommodationMark == 0}">
+                                <div class="btn-group"  style="margin-top: 1px">
+                                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <fmt:message key="label.rate.accommodation"/>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="controller?command=rate-accommodation-command&mark=1&requestId=${request.entityId}&accommodationId=${accommodation.entityId}">1</a>
+                                        <a class="dropdown-item" href="controller?command=rate-accommodation-command&mark=2&requestId=${request.entityId}&accommodationId=${accommodation.entityId}">2</a>
+                                        <a class="dropdown-item" href="controller?command=rate-accommodation-command&mark=3&requestId=${request.entityId}&accommodationId=${accommodation.entityId}">3</a>
+                                        <a class="dropdown-item" href="controller?command=rate-accommodation-command&mark=4&requestId=${request.entityId}&accommodationId=${accommodation.entityId}">4</a>
+                                        <a class="dropdown-item" href="controller?command=rate-accommodation-command&mark=5&requestId=${request.entityId}&accommodationId=${accommodation.entityId}">5</a>
+                                    </div>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <fmt:message key="label.mark.for.accommodation"/>: <jsp:text>${accommodation.accommodationMark}</jsp:text>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                </div>
+            </c:forEach>
+        </c:if>
+    </div>
+    <div class="card-footer font-weight-bold">
+        <fmt:message key="label.bill"/>: <jsp:text>${request.requestBill}</jsp:text>
+    </div>
+</div>
